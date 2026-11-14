@@ -573,11 +573,13 @@ function init() {
     g.beginPath(); g.moveTo(n + 40, y0 + 22); g.lineTo(W - n - 40, y0 + 22); g.moveTo(n + 40, y1 - 22); g.lineTo(W - n - 40, y1 - 22); g.stroke(); g.setLineDash([]);
     g.textAlign = 'center'; g.textBaseline = 'middle'; g.fillStyle = '#ffe9a8';
     g.shadowColor = 'rgba(0,0,0,.45)'; g.shadowBlur = 8; g.shadowOffsetY = 4;
-    g.font = 'bold 124px Georgia, "Times New Roman", serif'; g.fillText('★ Stavba roku 2026 ★', W / 2, 140);
-    g.font = '60px Georgia, "Times New Roman", serif'; g.fillStyle = '#fff6dc';
-    g.fillText('Rodina Bijani · termín: do Štědrého dne. Snad.', W / 2, 252);
-    g.font = 'italic 52px Georgia, "Times New Roman", serif'; g.fillStyle = '#ffe9a8';
-    g.fillText('Libolek už se nemůže dočkat kolaudace 🏗', W / 2, 336);
+    const fit = (txt, px, style, y, maxW) => {
+      do { g.font = `${style} ${px}px Georgia, "Times New Roman", serif`; px -= 2; } while (g.measureText(txt).width > maxW && px > 20);
+      g.fillText(txt, W / 2, y);
+    };
+    fit('Libolek už se nemůže dočkat kolaudace 🏗', 104, 'bold', 128, W - 2 * n - 120);
+    g.fillStyle = '#fff6dc'; fit('Rodina Bijani · termín: do Štědrého dne. Snad.', 56, '', 222, W - 2 * n - 200);
+    g.fillStyle = '#ffe9a8'; fit('★ Stavba roku 2026 ★', 96, 'bold', 316, W - 2 * n - 200);
     const t = new THREE.CanvasTexture(c); t.encoding = THREE.sRGBEncoding; t.anisotropy = 4;
     const tb = t.clone(); tb.needsUpdate = true; tb.wrapS = THREE.RepeatWrapping; tb.repeat.x = -1;
     const bw = 500, bh = bw * H / W;
