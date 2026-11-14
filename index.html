@@ -35,6 +35,9 @@
   #shop tr.sel td { background:#3a3220; } #shop tr.done b { text-decoration:line-through; color:var(--mute); }
   #shop td.q { white-space:nowrap; color:var(--acc); text-align:right; font-size:13px; }
   .hint { color:var(--mute); font-size:12px; }
+  #obi td { border-bottom:1px solid var(--line); padding:6px 4px; vertical-align:top; font-size:13px; }
+  #obi td.n { color:var(--mute); width:26px; } #obi td.q { white-space:nowrap; color:var(--acc); text-align:right; }
+  #obi a, aside p a { color:#9cc8ff; text-decoration:none; } #obi a:hover { text-decoration:underline; }
   .fam { display:inline-block; font-size:12px; letter-spacing:.04em; color:#ffe9a8; background:linear-gradient(90deg,#8e1f27,#b8282f); border:1px solid #e0b64a; border-radius:20px; padding:3px 12px; margin-bottom:6px; }
   .cut { background:#11151f; border:1px solid var(--line); border-radius:8px; padding:8px; margin:8px 0; }
   .cut svg { width:100%; height:auto; display:block; } .cut .cap { font-size:12px; color:var(--mute); margin-top:4px; }
@@ -77,7 +80,7 @@
   @media print {
     body { display:block; background:#fff; color:#000; } #view, .noprint { display:none !important; }
     aside { width:100%; min-width:0; height:auto; overflow:visible; background:#fff; border:none; }
-    h2 { color:#000; } p, li, .hint, #shop td.q { color:#000; } #shop td { border-color:#bbb; } #shop tr.sel td { background:none; }
+    h2 { color:#000; } p, li, .hint, #shop td.q { color:#000; } #shop td { border-color:#bbb; } #shop tr.sel td { background:none; } #obi a, #obi td.q { color:#000; } #obi td { border-color:#bbb; }
     .cut { background:#fff; border-color:#999; } .print-only { display:block; }
   }
 </style>
@@ -177,6 +180,39 @@
     <li class="warn">Do not use spray paint, solvent glue (Chemoprén, Kanagom) or superglue on polystyrene, because they melt it. Use water-based acrylic paint and PVA/Herkules glue.</li>
   </ul>
   <p class="hint">Model scale is 1:1 in mm. The grid squares under the model are 50 × 50 mm.</p>
+
+  <h2>Where to buy – OBI Kolín</h2>
+  <p class="hint">OBI Kolín, V Kasárnách 1022 · daily 8:00–20:00 · ☎ <a href="tel:+420277001004">277 001 004</a> · <a href="https://www.obi.cz/prodejna/kolin" target="_blank" rel="noopener">store page</a>. Tap a product to open it on obi.cz. <b>[n]</b> = pieces in stock in Kolín on 14 Nov 2026 evening.</p>
+  <table id="obi"><tbody>
+    <tr><td class="n">1</td><td><a href="https://www.obi.cz/police-a-nabytkove-desky/obi-sparovka-prirodni-borovice-nefoliovana-80-x-20-x-1-8-cm/p/1011147" target="_blank" rel="noopener">Spárovka borovice 80×20×1.8 cm</a><div class="hint">base board – have it cut to 700 × 200</div></td><td class="q">[58] 109 Kč</td></tr>
+    <tr><td class="n">2</td><td><a href="https://www.obi.cz/penove-izolace/isover-fasadni-desky-z-penoveho-polystyrenu-eps-70f-100-x-50-x-5-cm/p/2104040" target="_blank" rel="noopener">Isover EPS 70F 100×50×5 cm</a><div class="hint">steps – 1 sheet (packed 10/pack, price per sheet; ask for one)</div></td><td class="q">[351] 57.50 Kč</td></tr>
+    <tr><td class="n">2b</td><td><a href="https://www.obi.cz/penove-izolace/austrotherm-polystyrenova-deska-xps-top-30-sf-126-5-x-61-5-x-5-cm/p/6135453" target="_blank" rel="noopener">XPS Austrotherm 126.5×61.5×5 cm</a><div class="hint">alternative to 2 – denser, cleaner cuts</div></td><td class="q">[15] 249 Kč</td></tr>
+    <tr><td class="n">3</td><td><a href="https://www.obi.cz/podkladove-desky/hdf-1stranne-lakovana-deska-kronospan-0101-pe-bila-tl-3-mm-metraz/p/5250444" target="_blank" rel="noopener">HDF bílá lakovaná 3 mm (metráž)</a><div class="hint">sky arch – ask for a 650 × 370 cut (or use stiff cardboard)</div></td><td class="q">[78] 135 Kč</td></tr>
+    <tr><td class="n">3b</td><td><a href="https://www.obi.cz/pilky-a-pilniky/lux-ram-lupinkove-pily-classic/p/5404116" target="_blank" rel="noopener">LUX lupínková pila</a> + <a href="https://www.obi.cz/pilky-a-pilniky/lux-listy-lupinkove-pily-na-drevo-velikost-5-comfort/p/5404207" target="_blank" rel="noopener">blades size 5</a><div class="hint">to cut the arch curve in HDF</div></td><td class="q">[7] 189 Kč<br>[14] 85 Kč</td></tr>
+    <tr><td class="n">4</td><td><a href="https://www.obi.cz/listy/doellken-profiles-hranol-obdelnikovy-dr02-prirodni-borovice-10-x-20-x-2100-mm/p/2317543" target="_blank" rel="noopener">Döllken DR02 borovice 10×20×2100</a><div class="hint">crib frame ④</div></td><td class="q">[8] 49 Kč</td></tr>
+    <tr><td class="n">5</td><td><a href="https://www.obi.cz/listy/doellken-profiles-dokoncovaci-soklova-lista-dr13-prir-borovice-5-x-40-x-2100-mm/p/2317824" target="_blank" rel="noopener">Döllken DR13 borovice 5×40×2100</a><div class="hint">frame strips – optional</div></td><td class="q">[29] 59 Kč</td></tr>
+    <tr><td class="n">6</td><td><a href="https://www.obi.cz/vanocni-dekorace/ditipo-balici-papir-kraft-bez-potisku-3-m-x-70-cm/p/5622311" target="_blank" rel="noopener">DITIPO kraft papír 3 m × 70 cm</a><div class="hint">brown paper behind the crib</div></td><td class="q">[2] 31 Kč</td></tr>
+    <tr><td class="n">7</td><td><a href="https://www.obi.cz/tonovaci-barvy/obi-color-tonovaci-barva-zelene-jablko-500-ml/p/5084199" target="_blank" rel="noopener">OBI Color tónovací zelené jablko 500 ml</a><div class="hint">green steps</div></td><td class="q">[7] 83 Kč</td></tr>
+    <tr><td class="n">8</td><td><a href="https://www.obi.cz/tonovaci-barvy/obi-color-tonovaci-barva-modra-500-ml/p/5084025" target="_blank" rel="noopener">OBI Color tónovací modrá 500 ml</a><div class="hint">blue sky</div></td><td class="q">[5] 83 Kč</td></tr>
+    <tr><td class="n">9</td><td><a href="https://www.obi.cz/bile-laky/obi-univerzalni-barva-2v1-hedvabne-matna-ciste-bila-125-ml/p/4508842" target="_blank" rel="noopener">OBI 2v1 čistě bílá 125 ml</a><div class="hint">white, water-based acrylic – mix lighter shades</div></td><td class="q">[4] 129 Kč</td></tr>
+    <tr><td class="n">9b</td><td><a href="https://www.obi.cz/akrylove-barvy/daler-rowney-sada-akrylovych-barev-simply-12-x-12-ml/p/7052020" target="_blank" rel="noopener">Daler Rowney akryl sada 12×12 ml</a><div class="hint">instead of 7–9 – small but enough for details</div></td><td class="q">[7] 249 Kč</td></tr>
+    <tr><td class="n">10</td><td><a href="https://www.obi.cz/kuchynske-nacini/spejle-spicate-bambus-25-cm-100-ks/p/6697262" target="_blank" rel="noopener">Špejle bambus 25 cm, 100 ks</a><div class="hint">sticks behind the figures</div></td><td class="q">[14] 25 Kč</td></tr>
+    <tr><td class="n">11</td><td><a href="https://www.obi.cz/lepidla/herkules-univerzalni-disperzni-lepidlo-250-g/p/2148021" target="_blank" rel="noopener">Herkules 250 g</a><div class="hint">wood, paper, foam</div></td><td class="q">[27] 149 Kč</td></tr>
+    <tr><td class="n">11b</td><td><a href="https://www.obi.cz/prislusenstvi-izolacnich-materialu/soudal-lepidlo-na-polystyren-400-g/p/4060828" target="_blank" rel="noopener">Soudal lepidlo na polystyren 400 g</a><div class="hint">foam to foam / board</div></td><td class="q">[25] 95 Kč</td></tr>
+    <tr><td class="n">11c</td><td><a href="https://www.obi.cz/kancelarske-potreby/herkules-univerzalni-lepici-tycinka-pro-domacnost-40-g/p/5617667" target="_blank" rel="noopener">Herkules lepicí tyčinka 40 g</a><div class="hint">figures onto stiff paper</div></td><td class="q">[18] 75 Kč</td></tr>
+    <tr><td class="n">11d</td><td><a href="https://www.obi.cz/tavne-lepici-pistole/tavna-pistole-30w-vc-5-lepicich-tycinek/p/6919203" target="_blank" rel="noopener">Tavná pistole 30 W + 5 tyčinek</a><div class="hint">optional – not on bare foam (melts)</div></td><td class="q">[32] 99 Kč</td></tr>
+    <tr><td class="n">12</td><td><a href="https://www.obi.cz/vyroba-sperku/mech-zeleny-30-g/p/4567319" target="_blank" rel="noopener">Mech zelený 30 g</a><div class="hint">moss on the steps</div></td><td class="q">[9] 85 Kč</td></tr>
+    <tr><td class="n">13</td><td><a href="https://www.obi.cz/noze/obi-odlamovaci-nuz-18-mm/p/4199212" target="_blank" rel="noopener">OBI odlamovací nůž 18 mm</a> + <a href="https://www.obi.cz/noze/nahradni-odlamovaci-cepele-0-5-x-18-x-100-mm-10-ks/p/3304425" target="_blank" rel="noopener">čepele 10 ks</a></td><td class="q">[437] 69 Kč<br>[282] 49 Kč</td></tr>
+    <tr><td class="n">13b</td><td><a href="https://www.obi.cz/zkousecky-a-merici-pristroje/lux-ocelove-meritko-500-mm-classic/p/5409289" target="_blank" rel="noopener">LUX ocelové měřítko 500 mm</a></td><td class="q">[8] 169 Kč</td></tr>
+    <tr><td class="n">13c</td><td><a href="https://www.obi.cz/brusne-materialy/lux-univerzalni-brusny-papir-k120/p/5421599" target="_blank" rel="noopener">LUX brusný papír K120</a></td><td class="q">[24] 9 Kč</td></tr>
+    <tr><td class="n">13d</td><td><a href="https://www.obi.cz/stetce/spokar-stetec-plochy-81215-1-5-/p/5264429" target="_blank" rel="noopener">Spokar štětec plochý 1.5"</a></td><td class="q">[26] 46 Kč</td></tr>
+  </tbody></table>
+  <ul class="hint">
+    <li>OBI has <b>no foam board (kapa)</b> and <b>no čtvrtka</b> – get stiff paper / cardboard at a papírnictví.</li>
+    <li>OBI cutting service (přířez): board 700 × 200, HDF 650 × 370. Ask if they cut 3 mm sheets.</li>
+    <li>Tónovací barvy are concentrates – use neat or mix with white. <b>No spray paint on foam.</b></li>
+    <li>Low stock (kraft paper 2, white 4, blue 5) – reserve on obi.cz if worried.</li>
+  </ul>
   <p class="hint" style="margin-top:14px">🎅 Schváleno stavební komisí rodiny Bijani. Záruka zaniká, když si na to sedne Mikuláš.</p>
 </aside>
 
