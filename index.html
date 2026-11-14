@@ -4,7 +4,15 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#141925">
-<title>Betlém – 3D build plan & shopping list</title>
+<title>Bijani Family Xmas Project 🎄 Betlém 3D build plan</title>
+<meta name="description" content="The Bijani family is building a Christmas nativity scene. Spin it in 3D, see every part and the shopping list. Elves welcome.">
+<meta property="og:title" content="🎄 Bijani Family Xmas Project">
+<meta property="og:description" content="Our Christmas betlém in 3D. Spin it, tap a part, see the shopping list. Elves welcome, glue provided.">
+<meta property="og:image" content="https://saeidskyboy.github.io/betlem-3d/preview.png">
+<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta property="og:url" content="https://saeidskyboy.github.io/betlem-3d/">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
 <style>
   :root { --bg:#141925; --panel:#1c2232; --line:#2e3750; --txt:#e7ecf7; --mute:#9aa6c0; --acc:#ffd34d; }
   * { box-sizing: border-box; }
@@ -27,6 +35,7 @@
   #shop tr.sel td { background:#3a3220; } #shop tr.done b { text-decoration:line-through; color:var(--mute); }
   #shop td.q { white-space:nowrap; color:var(--acc); text-align:right; font-size:13px; }
   .hint { color:var(--mute); font-size:12px; }
+  .fam { display:inline-block; font-size:12px; letter-spacing:.04em; color:#ffe9a8; background:linear-gradient(90deg,#8e1f27,#b8282f); border:1px solid #e0b64a; border-radius:20px; padding:3px 12px; margin-bottom:6px; }
   .cut { background:#11151f; border:1px solid var(--line); border-radius:8px; padding:8px; margin:8px 0; }
   .cut svg { width:100%; height:auto; display:block; } .cut .cap { font-size:12px; color:var(--mute); margin-top:4px; }
   svg text { font-family: system-ui, sans-serif; }
@@ -75,6 +84,7 @@
 </head>
 <body>
 <aside>
+  <div class="fam">🎄 Bijani Family Xmas Project · 2026</div>
   <h1>Betlém – 3D build plan <small>OFTIS paper nativity · all sizes in mm</small></h1>
   <p class="hint">Drag the model to rotate it. Click any part, or any row in the shopping list, to see its size and material.</p>
 
@@ -97,6 +107,7 @@
       <button data-toggle="trim">Frame strips</button>
       <button data-toggle="cut">Cut through</button>
       <button data-toggle="spin">Auto-rotate</button>
+      <button data-toggle="snow">Snow ❄</button>
     </div>
   </div>
 
@@ -166,13 +177,14 @@
     <li class="warn">Do not use spray paint, solvent glue (Chemoprén, Kanagom) or superglue on polystyrene, because they melt it. Use water-based acrylic paint and PVA/Herkules glue.</li>
   </ul>
   <p class="hint">Model scale is 1:1 in mm. The grid squares under the model are 50 × 50 mm.</p>
+  <p class="hint" style="margin-top:14px">🎅 Approved by the Bijani Family Building Committee. Warranty void if Santa sits on it.</p>
 </aside>
 
 <div id="view">
   <div id="help" class="noprint">🖱 drag = rotate · right-drag / shift+drag = pan · wheel = zoom · click a part = details</div>
   <button id="fs" class="noprint" title="Full screen 3D">⤢</button>
   <div id="info"></div>
-  <div id="loading">Loading 3D model…</div>
+  <div id="loading">🧝 The elves are cutting polystyrene…</div>
   <div id="err"></div>
 </div>
 
@@ -222,6 +234,11 @@ const PARTS = {
     material: 'Back each with stiff paper + a wooden stick (dřevěná tříska)',
     note: 'Cut out, glue onto stiff paper, glue a stick on the back. Let the stick stick out ~10 mm at the bottom and push it into the foam so the figure stands.' }
 };
+
+PARTS.banner = { num: '🎄', color: '#e0b64a', name: 'Bijani Family Xmas Project', cz: 'official project banner · not for sale',
+  size: 'Exactly as big as the family Christmas spirit (so: very big)',
+  material: 'Love, PVA glue, cookies and a little patience',
+  note: 'Project manager: whoever is holding the glue. Quality control: everyone who walks past. Deadline: before the cookies run out. Status: under construction 🚧. No elves were harmed.' };
 
 const SHOP = [
   { id: 's1', parts: ['board'], item: 'Wooden board 18 mm — spárovka / plywood / MDF', qty: '700 × 200 mm, 1 pc', hint: 'ask the shop to cut it' },
@@ -544,6 +561,65 @@ function init() {
   addDim(groups.sky, [-325, 170, -80], [325, 170, -80], [0, 230, 0], '650', '#7fb2ff', [0, 14, 0]);
   addLabel(groups.sky, [-250, 300, -74], 'sky', '650×370, cardboard');
 
+  // 🎄 family banner: a waving ribbon above the sky (decoration only, not a part to buy)
+  const banner = (() => {
+    const W = 2048, H = 360, c = document.createElement('canvas'); c.width = W; c.height = H;
+    const g = c.getContext('2d'), n = 70, y0 = 40, y1 = 320;
+    const band = new Path2D(); band.moveTo(0, y0); band.lineTo(W, y0); band.lineTo(W - n, (y0 + y1) / 2); band.lineTo(W, y1); band.lineTo(0, y1); band.lineTo(n, (y0 + y1) / 2); band.closePath();
+    const gr = g.createLinearGradient(0, y0, 0, y1); gr.addColorStop(0, '#c9323a'); gr.addColorStop(0.5, '#a3202a'); gr.addColorStop(1, '#7d1720');
+    g.fillStyle = gr; g.fill(band);
+    g.lineWidth = 10; g.strokeStyle = '#e8c15a'; g.stroke(band);
+    g.setLineDash([18, 14]); g.lineWidth = 4; g.strokeStyle = 'rgba(255,233,168,.75)';
+    g.beginPath(); g.moveTo(n + 40, y0 + 22); g.lineTo(W - n - 40, y0 + 22); g.moveTo(n + 40, y1 - 22); g.lineTo(W - n - 40, y1 - 22); g.stroke(); g.setLineDash([]);
+    g.textAlign = 'center'; g.textBaseline = 'middle'; g.fillStyle = '#ffe9a8';
+    g.shadowColor = 'rgba(0,0,0,.45)'; g.shadowBlur = 8; g.shadowOffsetY = 4;
+    g.font = 'bold 118px Georgia, "Times New Roman", serif'; g.fillText('★ Bijani Family Xmas Project ★', W / 2, 152);
+    g.font = 'italic 54px Georgia, "Times New Roman", serif'; g.fillStyle = '#fff6dc';
+    g.fillText('est. 2026 · powered by glue, cookies & teamwork', W / 2, 252);
+    const t = new THREE.CanvasTexture(c); t.encoding = THREE.sRGBEncoding; t.anisotropy = 4;
+    const tb = t.clone(); tb.needsUpdate = true; tb.wrapS = THREE.RepeatWrapping; tb.repeat.x = -1;
+    const bw = 540, bh = bw * H / W;
+    const geo = new THREE.PlaneGeometry(bw, bh, 48, 1);
+    const base = Float32Array.from(geo.attributes.position.array);
+    const mf = new THREE.MeshLambertMaterial({ map: t, transparent: true, alphaTest: 0.3, side: THREE.FrontSide });
+    const mb = new THREE.MeshLambertMaterial({ map: tb, transparent: true, alphaTest: 0.3, side: THREE.BackSide });
+    const grp = new THREE.Group(); grp.position.set(0, 478, -50);
+    [mf, mb].forEach(m => { const me = new THREE.Mesh(geo, m); me.userData.part = 'banner'; PART_MESHES.banner.meshes.push(me); PART_MESHES.banner.mats.add(m); grp.add(me); });
+    groups.sky.add(grp);
+    grp.userData.wave = time => {
+      const a = geo.attributes.position.array;
+      for (let i = 0; i < a.length; i += 3) {
+        const x = base[i], u = x / (bw / 2);
+        a[i + 2] = 22 * u * u + 5 * Math.sin(x * 0.018 - time * 2.2);
+        a[i + 1] = base[i + 1] + 3 * Math.sin(x * 0.012 - time * 1.6);
+      }
+      geo.attributes.position.needsUpdate = true; geo.computeVertexNormals();
+    };
+    return grp;
+  })();
+
+  // ❄ gentle snow
+  const snow = (() => {
+    const N = 260, pos = new Float32Array(N * 3), spd = new Float32Array(N);
+    const rnd = (a, b) => a + Math.random() * (b - a);
+    for (let i = 0; i < N; i++) { pos[i * 3] = rnd(-480, 480); pos[i * 3 + 1] = rnd(0, 620); pos[i * 3 + 2] = rnd(-220, 260); spd[i] = rnd(18, 42); }
+    const geo = new THREE.BufferGeometry(); geo.setAttribute('position', new THREE.BufferAttribute(pos, 3));
+    const c = document.createElement('canvas'); c.width = c.height = 64; const g = c.getContext('2d');
+    const rg = g.createRadialGradient(32, 32, 0, 32, 32, 32); rg.addColorStop(0, 'rgba(255,255,255,1)'); rg.addColorStop(0.4, 'rgba(255,255,255,.8)'); rg.addColorStop(1, 'rgba(255,255,255,0)');
+    g.fillStyle = rg; g.fillRect(0, 0, 64, 64);
+    const pts = new THREE.Points(geo, new THREE.PointsMaterial({ size: 7, map: new THREE.CanvasTexture(c), transparent: true, depthWrite: false, opacity: 0.9 }));
+    scene.add(pts);
+    pts.userData.tick = (dt, time) => {
+      for (let i = 0; i < N; i++) {
+        pos[i * 3 + 1] -= spd[i] * dt;
+        pos[i * 3] += Math.sin(time * 0.8 + i) * 6 * dt;
+        if (pos[i * 3 + 1] < -18) { pos[i * 3 + 1] = 620; pos[i * 3] = rnd(-480, 480); }
+      }
+      geo.attributes.position.needsUpdate = true;
+    };
+    return pts;
+  })();
+
   /* ---------- printed things (figures, stable, angel, star) ---------- */
   function roundRect(g, x, y, w, h, r) { g.beginPath(); g.moveTo(x + r, y); g.arcTo(x + w, y, x + w, y + h, r); g.arcTo(x + w, y + h, x, y + h, r); g.arcTo(x, y + h, x, y, r); g.arcTo(x, y, x + w, y, r); g.closePath(); }
   function paperBase(g, W, H) {
@@ -709,7 +785,7 @@ function init() {
 
   /* ---------- state & UI ---------- */
   const isSmall = Math.min(window.innerWidth, window.innerHeight) < 600;
-  const state = { dims: true, labels: !isSmall, figs: true, explode: false, raw: false, trim: true, cut: false, spin: false };
+  const state = { dims: true, labels: !isSmall, figs: true, explode: false, raw: false, trim: true, cut: false, spin: false, snow: true };
   let explodeT = 0;
 
   function applyClip() {
@@ -720,6 +796,8 @@ function init() {
     LABELS.forEach(l => l.visible = state.labels && !state.cut && (state.figs || !['figures', 'stable'].includes(l.userData.labelPart)) && (state.trim || l.userData.labelPart !== 'trim'));
     FIG_OBJS.forEach(f => f.visible = state.figs);
     groups.trim.visible = state.trim;
+    banner.visible = !state.cut && !state.raw;
+    snow.visible = state.snow && !state.cut && !state.raw;
     CAPS.forEach(c => c.visible = state.cut);
     RAW_SWAP.forEach(r => r.mesh.material = state.raw ? r.raw : r.finished);
     document.querySelectorAll('[data-toggle]').forEach(b => b.classList.toggle('on', !!state[b.dataset.toggle]));
@@ -734,10 +812,10 @@ function init() {
 
   const PRESETS = {
     iso: { p: [600, 480, 1200], t: [10, 130, 0] },
-    front: { p: [0, 190, 1300], t: [0, 150, 0] },
+    front: { p: [0, 230, 1350], t: [0, 190, 0] },
     side: { p: [-2700, 160, 20], t: [0, 160, 20], zoom: 2.9 },
     top: { p: [0, 1350, 220], t: [0, 0, 15] },
-    back: { p: [380, 420, -1150], t: [0, 150, 0] }
+    back: { p: [420, 480, -1330], t: [0, 190, 0] }
   };
   let fly = null;
   function flyTo(name, keepCut) {
@@ -820,8 +898,12 @@ function init() {
   new ResizeObserver(resize).observe(view); resize();
   const ease = t => t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2;
   const tmp = new THREE.Vector3(); let lastZoom = 1;
+  let lastNow = 0;
   function loop(now) {
     requestAnimationFrame(loop);
+    const dt = Math.min(0.1, (now - (lastNow || now)) / 1000), time = now / 1000; lastNow = now;
+    if (banner.visible) banner.userData.wave(time);
+    if (snow.visible) snow.userData.tick(dt, time);
     const target = state.explode ? 1 : 0;
     if (Math.abs(explodeT - target) > 0.001) {
       explodeT += (target - explodeT) * 0.12;
@@ -843,7 +925,7 @@ function init() {
   window.__betlem = { scene, camera, controls, state, flyTo, applyVis };
   // optional deep link, e.g. index.html#view=side&explode=1&raw=1
   const hp = new URLSearchParams(location.hash.slice(1));
-  ['dims', 'labels', 'figs', 'explode', 'raw', 'trim', 'cut', 'spin'].forEach(k => { if (hp.has(k)) state[k] = hp.get(k) === '1'; });
+  ['dims', 'labels', 'figs', 'explode', 'raw', 'trim', 'cut', 'spin', 'snow'].forEach(k => { if (hp.has(k)) state[k] = hp.get(k) === '1'; });
   if (hp.get('raw') === '1' && !hp.has('figs')) state.figs = false;
   controls.autoRotate = state.spin; applyClip(); applyVis();
   if (hp.has('view') && PRESETS[hp.get('view')]) { const pr = PRESETS[hp.get('view')]; if (hp.get('view') === 'side') { state.cut = true; applyClip(); applyVis(); } camera.position.copy(presetPos(pr)); controls.target.set(...pr.t); camera.zoom = pr.zoom || 1; camera.updateProjectionMatrix(); }
