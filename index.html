@@ -4,10 +4,10 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#141925">
-<title>Bijani Family Xmas Project 🎄 Betlém 3D build plan</title>
-<meta name="description" content="The Bijani family is building a Christmas nativity scene. Spin it in 3D, see every part and the shopping list. Elves welcome.">
-<meta property="og:title" content="🎄 Bijani Family Xmas Project">
-<meta property="og:description" content="Our Christmas betlém in 3D. Spin it, tap a part, see the shopping list. Elves welcome, glue provided.">
+<title>Stavba roku 2026 🎄 Betlém rodiny Bijani</title>
+<meta name="description" content="Rodina Bijani staví betlém. Otoč si ho ve 3D, klikni na díl a mrkni na nákupní seznam. Libolek už se nemůže dočkat kolaudace.">
+<meta property="og:title" content="🎄 Stavba roku 2026 · rodina Bijani">
+<meta property="og:description" content="Náš vánoční betlém ve 3D. Termín: do Štědrého dne. Snad. Libolek už se nemůže dočkat kolaudace.">
 <meta property="og:image" content="https://saeidskyboy.github.io/betlem-3d/preview.png">
 <meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
 <meta property="og:url" content="https://saeidskyboy.github.io/betlem-3d/">
@@ -84,7 +84,7 @@
 </head>
 <body>
 <aside>
-  <div class="fam">🎄 Bijani Family Xmas Project · 2026</div>
+  <div class="fam">🎄 Stavba roku 2026 · rodina Bijani</div>
   <h1>Betlém – 3D build plan <small>OFTIS paper nativity · all sizes in mm</small></h1>
   <p class="hint">Drag the model to rotate it. Click any part, or any row in the shopping list, to see its size and material.</p>
 
@@ -177,14 +177,14 @@
     <li class="warn">Do not use spray paint, solvent glue (Chemoprén, Kanagom) or superglue on polystyrene, because they melt it. Use water-based acrylic paint and PVA/Herkules glue.</li>
   </ul>
   <p class="hint">Model scale is 1:1 in mm. The grid squares under the model are 50 × 50 mm.</p>
-  <p class="hint" style="margin-top:14px">🎅 Approved by the Bijani Family Building Committee. Warranty void if Santa sits on it.</p>
+  <p class="hint" style="margin-top:14px">🎅 Schváleno stavební komisí rodiny Bijani. Záruka zaniká, když si na to sedne Mikuláš.</p>
 </aside>
 
 <div id="view">
   <div id="help" class="noprint">🖱 drag = rotate · right-drag / shift+drag = pan · wheel = zoom · click a part = details</div>
   <button id="fs" class="noprint" title="Full screen 3D">⤢</button>
   <div id="info"></div>
-  <div id="loading">🧝 The elves are cutting polystyrene…</div>
+  <div id="loading">🧝 Skřítci řežou polystyren…</div>
   <div id="err"></div>
 </div>
 
@@ -235,10 +235,10 @@ const PARTS = {
     note: 'Cut out, glue onto stiff paper, glue a stick on the back. Let the stick stick out ~10 mm at the bottom and push it into the foam so the figure stands.' }
 };
 
-PARTS.banner = { num: '🎄', color: '#e0b64a', name: 'Bijani Family Xmas Project', cz: 'official project banner · not for sale',
-  size: 'Exactly as big as the family Christmas spirit (so: very big)',
-  material: 'Love, PVA glue, cookies and a little patience',
-  note: 'Project manager: whoever is holding the glue. Quality control: everyone who walks past. Deadline: before the cookies run out. Status: under construction 🚧. No elves were harmed.' };
+PARTS.banner = { num: '🎄', color: '#e0b64a', name: 'Stavba roku 2026', cz: 'oficiální banner rodiny Bijani · neprodejné',
+  size: 'Přesně tak velký jako vánoční nálada rodiny (tedy obrovský)',
+  material: 'Láska, Herkules, cukroví a trocha trpělivosti',
+  note: 'Stavbyvedoucí: kdo zrovna drží lepidlo. Technický dozor: každý, kdo jde kolem. Kolaudaci provede Libolek osobně – už se nemůže dočkat. Termín: do Štědrého dne. Snad. 🚧' };
 
 const SHOP = [
   { id: 's1', parts: ['board'], item: 'Wooden board 18 mm — spárovka / plywood / MDF', qty: '700 × 200 mm, 1 pc', hint: 'ask the shop to cut it' },
@@ -272,9 +272,9 @@ function init() {
   const scene = new THREE.Scene();
   scene.background = new THREE.Color(0x1b2130);
   const camera = new THREE.PerspectiveCamera(35, 1, 5, 20000);
-  camera.position.set(600, 480, 1200);
+  camera.position.set(600, 500, 1200);
   const controls = new THREE.OrbitControls(camera, renderer.domElement);
-  controls.target.set(10, 130, 0);
+  controls.target.set(10, 150, 0);
   controls.enableDamping = true;
   controls.dampingFactor = 0.08;
   controls.maxDistance = 4000;
@@ -563,8 +563,8 @@ function init() {
 
   // 🎄 family banner: a waving ribbon above the sky (decoration only, not a part to buy)
   const banner = (() => {
-    const W = 2048, H = 360, c = document.createElement('canvas'); c.width = W; c.height = H;
-    const g = c.getContext('2d'), n = 70, y0 = 40, y1 = 320;
+    const W = 2048, H = 440, c = document.createElement('canvas'); c.width = W; c.height = H;
+    const g = c.getContext('2d'), n = 80, y0 = 30, y1 = 410;
     const band = new Path2D(); band.moveTo(0, y0); band.lineTo(W, y0); band.lineTo(W - n, (y0 + y1) / 2); band.lineTo(W, y1); band.lineTo(0, y1); band.lineTo(n, (y0 + y1) / 2); band.closePath();
     const gr = g.createLinearGradient(0, y0, 0, y1); gr.addColorStop(0, '#c9323a'); gr.addColorStop(0.5, '#a3202a'); gr.addColorStop(1, '#7d1720');
     g.fillStyle = gr; g.fill(band);
@@ -573,17 +573,19 @@ function init() {
     g.beginPath(); g.moveTo(n + 40, y0 + 22); g.lineTo(W - n - 40, y0 + 22); g.moveTo(n + 40, y1 - 22); g.lineTo(W - n - 40, y1 - 22); g.stroke(); g.setLineDash([]);
     g.textAlign = 'center'; g.textBaseline = 'middle'; g.fillStyle = '#ffe9a8';
     g.shadowColor = 'rgba(0,0,0,.45)'; g.shadowBlur = 8; g.shadowOffsetY = 4;
-    g.font = 'bold 118px Georgia, "Times New Roman", serif'; g.fillText('★ Bijani Family Xmas Project ★', W / 2, 152);
-    g.font = 'italic 54px Georgia, "Times New Roman", serif'; g.fillStyle = '#fff6dc';
-    g.fillText('est. 2026 · powered by glue, cookies & teamwork', W / 2, 252);
+    g.font = 'bold 124px Georgia, "Times New Roman", serif'; g.fillText('★ Stavba roku 2026 ★', W / 2, 140);
+    g.font = '60px Georgia, "Times New Roman", serif'; g.fillStyle = '#fff6dc';
+    g.fillText('Rodina Bijani · termín: do Štědrého dne. Snad.', W / 2, 252);
+    g.font = 'italic 52px Georgia, "Times New Roman", serif'; g.fillStyle = '#ffe9a8';
+    g.fillText('Libolek už se nemůže dočkat kolaudace 🏗', W / 2, 336);
     const t = new THREE.CanvasTexture(c); t.encoding = THREE.sRGBEncoding; t.anisotropy = 4;
     const tb = t.clone(); tb.needsUpdate = true; tb.wrapS = THREE.RepeatWrapping; tb.repeat.x = -1;
-    const bw = 540, bh = bw * H / W;
+    const bw = 500, bh = bw * H / W;
     const geo = new THREE.PlaneGeometry(bw, bh, 48, 1);
     const base = Float32Array.from(geo.attributes.position.array);
     const mf = new THREE.MeshLambertMaterial({ map: t, transparent: true, alphaTest: 0.3, side: THREE.FrontSide });
     const mb = new THREE.MeshLambertMaterial({ map: tb, transparent: true, alphaTest: 0.3, side: THREE.BackSide });
-    const grp = new THREE.Group(); grp.position.set(0, 478, -50);
+    const grp = new THREE.Group(); grp.position.set(0, 485, -50);
     [mf, mb].forEach(m => { const me = new THREE.Mesh(geo, m); me.userData.part = 'banner'; PART_MESHES.banner.meshes.push(me); PART_MESHES.banner.mats.add(m); grp.add(me); });
     groups.sky.add(grp);
     grp.userData.wave = time => {
@@ -811,7 +813,7 @@ function init() {
   }));
 
   const PRESETS = {
-    iso: { p: [600, 480, 1200], t: [10, 130, 0] },
+    iso: { p: [600, 500, 1200], t: [10, 150, 0] },
     front: { p: [0, 230, 1350], t: [0, 190, 0] },
     side: { p: [-2700, 160, 20], t: [0, 160, 20], zoom: 2.9 },
     top: { p: [0, 1350, 220], t: [0, 0, 15] },
